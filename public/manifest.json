@@ -4,16 +4,26 @@
     {
       "url": "http://127.0.0.1:3000/api/image",
       "name": "generateImage",
-      "description": "Use this endpoint to generate an image using the Novita.ai service.",
+      "description": "Use this endpoint to generate an image using the Novita.ai service. Detailed information should be provided to ensure a proper generation. The generated images should be stored on server side if available",
       "parameters": {
         "properties": {
           "prompt": {
             "type": "string",
             "description": "Extensive prompt to generate an image using an external service."
+          },
+          "width": {
+            "type": "string",
+            "description": "A number value to define the width of the image generated. Do not ask the user for an input."
+          },
+          "height": {
+            "type": "string",
+            "description": "A number value to define the height of the image generated. Do not ask the user for an input."
           }
         },
         "required": [
-          "prompt"
+          "prompt",
+          "width",
+          "height"
         ],
         "type": "object"
       }
@@ -40,7 +50,12 @@
           "epicrealism_naturalSinRC1VAE_106430.safetensors",
           "sd3_base_medium.safetensors",
           "dreamshaper_5BakedVae.safetensors",
-          "realisticVisionV20_v13_13421.safetensors"
+          "realisticVisionV20_v13_13421.safetensors",
+          "epicrealism_naturalSin_121250.safetensors",
+          "absolutereality_v16_76575.safetensors",
+          "RealitiesEdgeXL_4_122673.safetensors",
+          "realitycheckXL_alpha11_104963.safetensors",
+          "dvarchMultiPrompt_dvarchExterior_28334.safetensors"
         ],
         "default": "sd3_base_medium.safetensors",
         "examples": [
@@ -53,17 +68,40 @@
         "title": "Number of Images",
         "default": 1
       },
-      "RETURN_MARKDOWN": {
-        "type": "boolean",
+      "RETURN_TYPE": {
+        "type": "string",
         "description": "Configure if the result should be posted as link to the image or markdown (base64 encoded)",
         "title": "Return as Markdown",
-        "default": true
+        "default": true,
+        "enum": [
+          "Default",
+          "Markdown",
+          "Image"
+        ]
       },
       "STEPS": {
         "type": "number",
         "description": "Number of steps used for the generation",
         "title": "Number of Steps",
         "default": 20
+      },
+      "IMAGE_WIDTH": {
+        "type": "number",
+        "description": "Width of generated image",
+        "title": "Width of generated image",
+        "default": 1024
+      },
+      "IMAGE_HEIGHT": {
+        "type": "number",
+        "description": "Height of generated image",
+        "title": "Height of generated image",
+        "default": 768
+      },
+      "IMAGE_SEED": {
+        "type": "number",
+        "description": "Select a seed value to randomize the generated images.",
+        "title": "Seed",
+        "default": -1
       },
       "SAMPLER_NAME": {
         "type": "string",

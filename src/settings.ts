@@ -29,8 +29,11 @@ export const defaultSettings: SettingsModel = {
 };
 
 export const settingsMap = {
+    "height": "IMAGE_HEIGHT",
     "image_num": "IMAGE_NUM",
     "model_name": "MODEL",
     "sampler_name": "SAMPLER_NAME",
+    "seed": "IMAGE_SEED",
     "steps": "STEPS",
+    "width": "IMAGE_WIDTH"
 };
