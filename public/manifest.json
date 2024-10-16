@@ -1,0 +1,91 @@
+{
+  "$schema": "../node_modules/@lobehub/chat-plugin-sdk/schema.json",
+  "api": [
+    {
+      "url": "http://127.0.0.1:3000/api/image",
+      "name": "generateImage",
+      "description": "Use this endpoint to generate an image using the Novita.ai service.",
+      "parameters": {
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "description": "Extensive prompt to generate an image using an external service."
+          }
+        },
+        "required": [
+          "prompt"
+        ],
+        "type": "object"
+      }
+    }
+  ],
+  "settings": {
+    "type": "object",
+    "required": [
+      "API_KEY",
+      "MODEL"
+    ],
+    "properties": {
+      "API_KEY": {
+        "type": "string",
+        "description": "API Key to access Novita API",
+        "title": "API Key",
+        "format": "password"
+      },
+      "MODEL": {
+        "type": "string",
+        "description": "Model to be used to generate the images.",
+        "title": "Text2Image Model",
+        "enum": [
+          "epicrealism_naturalSinRC1VAE_106430.safetensors",
+          "sd3_base_medium.safetensors",
+          "dreamshaper_5BakedVae.safetensors",
+          "realisticVisionV20_v13_13421.safetensors"
+        ],
+        "default": "sd3_base_medium.safetensors",
+        "examples": [
+          "sd3_base_medium.safetensors"
+        ]
+      },
+      "IMAGE_NUM": {
+        "type": "number",
+        "description": "Number of images to be generated",
+        "title": "Number of Images",
+        "default": 1
+      },
+      "RETURN_MARKDOWN": {
+        "type": "boolean",
+        "description": "Configure if the result should be posted as link to the image or markdown (base64 encoded)",
+        "title": "Return as Markdown",
+        "default": true
+      },
+      "STEPS": {
+        "type": "number",
+        "description": "Number of steps used for the generation",
+        "title": "Number of Steps",
+        "default": 20
+      },
+      "SAMPLER_NAME": {
+        "type": "string",
+        "description": "Sampler used for image generation",
+        "title": "Sampler Name",
+        "default": "DPM++ 2S a Karras"
+      }
+    }
+  },
+  "author": "Alexander Lambertz",
+  "createdAt": "2023-10-15",
+  "gateway": "http://127.0.0.1:3000/api/gateway",
+  "homepage": "https://github.com/alexlambertz/lobe-novita",
+  "identifier": "plugin-identifier",
+  "meta": {
+    "avatar": "🚀",
+    "tags": [
+      "image"
+    ],
+    "title": "Novita Image Plugin",
+    "description": "Plugin to generate images using the novita.ai endpoint."
+  },
+  "type": "default",
+  "version": "0.1"
+}
