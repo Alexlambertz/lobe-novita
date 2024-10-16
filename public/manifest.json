@@ -70,8 +70,8 @@
       },
       "RETURN_TYPE": {
         "type": "string",
-        "description": "Configure if the result should be posted as link to the image or markdown (base64 encoded)",
-        "title": "Return as Markdown",
+        "description": "Configure how the result should be posted in the chat",
+        "title": "Return Type",
         "default": true,
         "enum": [
           "Default",
