@@ -3,9 +3,5 @@ services:
   web:
     build:
       context: ./
-      target: runner
-    volumes:
-      - .:/app
-    command: npm start
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
