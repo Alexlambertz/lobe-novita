@@ -2,9 +2,11 @@ FROM node:18-alpine
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-COPY . .
+COPY ./package.json ./
 RUN npm install
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_TELEMETRY_DISABLED=1
+
+COPY . .
 RUN npm run build
 
 RUN addgroup --system --gid 1001 nodejs
